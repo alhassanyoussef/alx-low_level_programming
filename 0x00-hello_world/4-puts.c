@@ -1,4 +1,5 @@
 #include<stdio.h>
+
 /**
  * mian| entry point
  * description| A C that prints by puts function
