@@ -1,16 +1,13 @@
 #include "main.h"
-#include <stdio.h>
-
 /**
- *  * main - check the code
- *   *
- *    * Return: Always 0.
- *     */
-int main(void)
+ * add - adds
+ *
+ * @x:int in1
+ * @y:int in2
+ *
+ * Return: x + y
+ */
+int add(int y, int x)
 {
-	    int n;
-
-	        n = add(89, 9);
-		    printf("%d\n", n);
-		        return (0);
+	return (x + y);
 }
