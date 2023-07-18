@@ -4,17 +4,17 @@
  *
  * @n: int in
  *
- * Return: n
+ * Return: lastDigit
  */
 int print_last_digit(int n)
 {
-	int lastDigit;
+	int x;
 
 	if (n < 0)
-		lastDigit = -1 * (n % 10);
+		x = -1 * (n % 10);
 	else
-		lastDigit = n % 10;
+		x = n % 10;
 
-	_putchar(lastDigit + '0');
-	return (lastDight);
+	_putchar(x + '0');
+	return (x);
 }
