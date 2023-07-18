@@ -23,10 +23,10 @@ void times_table(void)
 			if (z <= 9)
 				_putchar(' ');
 			else
-				_putchar((y / 10) + 48);
+				_putchar(y / 10 + '0');
 
 
-				_putchar((y % 10) + 48);
+				_putchar(y % 10 + '0');
 
 		}
 		_putchar('\n');
