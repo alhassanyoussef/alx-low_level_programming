@@ -1,18 +1,15 @@
 #include "main.h"
 
+#include "main.h"
 /**
- * print_sign: function that prints the sign of a number
+ * print_sign - prints a sign
  *
- * @c: check input of function
+ * @n: int input
  *
- * Return: return 1 if n is +, return 0 if n is 0
- *             return -1 if n is -
- *
+ * Return: 1 if + 0 if zero "-1" if -
  */
-
 int print_sign(int n)
 {
-
 	if (n > 0)
 	{
 		_putchar(43);
@@ -23,10 +20,9 @@ int print_sign(int n)
 		_putchar(48);
 		return (0);
 	}
-	else (n < 0)
+	else
 	{
 		_putchar(45);
 		return (-1);
 	}
-
 }
