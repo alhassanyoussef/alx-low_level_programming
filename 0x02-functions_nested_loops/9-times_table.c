@@ -25,7 +25,6 @@ void times_table(void)
 			else
 				_putchar(y / 10 + '0');
 
-
 				_putchar(y % 10 + '0');
 
 		}
