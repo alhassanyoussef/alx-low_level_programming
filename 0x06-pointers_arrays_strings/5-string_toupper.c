@@ -7,13 +7,14 @@
  */
 char *string_toupper(char *n)
 {
-	int len = strlen(n)
+	int len = strlen(n);
 
 	int i;
 
-	for (i = 0; i < len; i++)
+	for (i = 0; i < len; i++){
 
-		n[i] = topper(n[i]);
+		n[i] = toupper(n[i]);
+	}
 		return (n);
 }
 
