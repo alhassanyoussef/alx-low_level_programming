@@ -1,0 +1,8 @@
+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
+git clone https://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@github.com/alhassanyoussef/alx-low_level_programming.git
+git config --global user.email "hyoussef650@.com"
+git config --global user.name "alhassanyoussef"
+git add . && git commit -m "a" && git push
+#!/bin/bash
+chmod -v u+x 
+https://github.com/alhassanyoussef/alx-low_level_programming.git
