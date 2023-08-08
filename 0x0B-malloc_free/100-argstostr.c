@@ -1,40 +1,47 @@
 #include "main.h"
 #include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
+
 /**
- * argstostr- fuction concatenates
- * @ac: integer
- * @av: char
- * Return: NULL or pointer
+ * argstostr - Concatenates all the arguments of a program.
+ * @ac: The argument count
+ * @av: The argument vector
+ *
+ * Return: A pointer to the concatenated string, or NULL if it fails
  */
 char *argstostr(int ac, char **av)
 {
-	int total_length;
-	int i;
-	char *result;
-	int position;
+	char *str;
+	int i, len, total_len = 0;
+	int index = 0;
 
 	if (ac == 0 || av == NULL)
+	return (NULL);
+
+	for (i = 0; i < ac; i++)
 	{
-		return (NULL);
+	len = 0;
+	while (av[i][len])
+	len++;
+	total_len += len;
 	}
-	total_length = 0;
-	for (i = 0; i < ac; ++i)
+
+	str = malloc(sizeof(char) * (total_len + ac + 1));
+	if (str == NULL)
+	return (NULL);
+
+	for (i = 0; i < ac; i++)
 	{
-		total_length += strlen(av[i]) + 1;
-	}
-	result = (char *)malloc(total_length * sizeof(char));
-	if (result == NULL)
+	len = 0;
+	while (av[i][len])
 	{
-		return (NULL);
+	str[index++] = av[i][len];
+	len++;
 	}
-	position = 0;
-	for (i = 0; i < ac; ++i)
-	{
-		strcpy(result + position, av[i]);
-		position += strlen(av[i]);
-		result[position++] = '\n';
+	str[index++] = '\n';
 	}
-	result[total_length - 1] = '\0';
-	return (result);
+
+	str[index] = '\0';
+
+	return (str);
 }
