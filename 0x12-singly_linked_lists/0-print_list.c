@@ -5,30 +5,17 @@
  *
  * Return: size of list
  */
-
 size_t print_list(const list_t *h)
 {
-	const list_t *current = h;
 	size_t count = 0;
+	const list_t *node = h;
 
-	if (h == NULL)
+	while (node != NULL)
 	{
-	printf("[0] (nil)\n");
-	return (0);
+	printf("[%zu] %s\n", count++, node->str);
+	node = node->next;
 	}
-
-	printf("[");
-	while (current != NULL)
-	{
-	printf("'%s'", current->str);
-	count++;
-
-	if (current->next != NULL)
-	printf(", ");
-
-	current = current->next;
-	}
-	printf("]\n");
 
 	return (count);
 }
+
