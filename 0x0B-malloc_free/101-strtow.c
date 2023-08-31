@@ -1,84 +1,77 @@
-#include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "main.h"
 
 /**
- * count_words - Counts the number of words in a string.
- * @str: The input string
+ * count_word - helper function to count the number of words in a string
+ * @s: string to evaluate
  *
- * Return: The number of words
+ * Return: number of words
  */
-int count_words(char *str)
+int count_word(char *s)
 {
-	int i, count = 0;
-	int in_word = 0;
+	int flag, c, w;
 
-	for (i = 0; str[i] != '\0'; i++)
+	flag = 0;
+	w = 0;
+
+	for (c = 0; s[c] != '\0'; c++)
 	{
-	if (str[i] != ' ')
-	{
-	if (!in_word)
-	{
-	in_word = 1;
-	count++;
-	}
-	}
-	else
-	{
-	in_word = 0;
-	}
+		if (s[c] == ' ')
+			flag = 0;
+		else if (flag == 0)
+		{
+			flag = 1;
+			w++;
+		}
 	}
 
-	return (count);
+	return (w);
 }
-
 /**
- * strtow - Splits a string into words.
- * @str: The input string
+ * **strtow - splits a string into words
+ * @str: string to split
  *
- * Return: A pointer to an array of strings (words), or NULL if it fails
+ * Return: pointer to an array of strings (Success)
+ * or NULL (Error)
  */
 char **strtow(char *str)
 {
-	char **words;
-	int i, j, k, len, word_count;
+	char **matrix, *tmp;
+	int i, k = 0, len = 0, words, c = 0, start, end;
 
-	if (str == NULL || *str == '\0')
-	return (NULL);
+	while (*(str + len))
+		len++;
+	words = count_word(str);
+	if (words == 0)
+		return (NULL);
 
-	word_count = count_words(str);
-	words = malloc(sizeof(char *) * (word_count + 1));
+	matrix = (char **) malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
+		return (NULL);
 
-	if (words == NULL)
-	return (NULL);
-
-	j = 0;
-	for (i = 0; i < word_count; i++)
+	for (i = 0; i <= len; i++)
 	{
-	while (str[j] == ' ')
-	j++;
-
-	len = 0;
-	while (str[j + len] != ' ' && str[j + len] != '\0')
-	len++;
-
-	words[i] = malloc(sizeof(char) * (len + 1));
-
-	if (words[i] == NULL)
-	{
-	for (k = 0; k < i; k++)
-	free(words[k]);
-	free(words);
-	return (NULL);
+		if (str[i] == ' ' || str[i] == '\0')
+		{
+			if (c)
+			{
+				end = i;
+				tmp = (char *) malloc(sizeof(char) * (c + 1));
+				if (tmp == NULL)
+					return (NULL);
+				while (start < end)
+					*tmp++ = str[start++];
+				*tmp = '\0';
+				matrix[k] = tmp - c;
+				k++;
+				c = 0;
+			}
+		}
+		else if (c++ == 0)
+			start = i;
 	}
 
-	for (k = 0; k < len; k++)
-	words[i][k] = str[j++];
+	matrix[k] = NULL;
 
-	words[i][k] = '\0';
-	}
-
-	words[word_count] = NULL;
-	return (words);
+	return (matrix);
 }
